@@ -49,6 +49,7 @@ mutation {
   createPost (input: {
     title: "Test Post"
     content: "Test content"
+    tags: "foo, bar"
   }) {
     __typename
     ... on CreatePostSuccess {
@@ -58,6 +59,66 @@ mutation {
         content
         createdAt
         updatedAt
+        tags {
+          edges {
+            node {
+              id
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Edit an existing post
+
+To edit an existing post via the GraphQL API execute the following mutation in GraphiQL:
+
+```
+mutation {
+  editPost (input: {
+    postId: 1
+    title: "New Post Title"
+    content: "Something else"
+    tags: "foo"
+  }) {
+    __typename
+    ... on EditPostSuccess {
+      post {
+        id
+        title
+        content
+        createdAt
+        updatedAt
+        tags {
+          edges {
+            node {
+              id
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+### Delete a  post
+
+To delete a post via the GraphQL API execute the following mutation in GraphiQL:
+
+```
+mutation {
+  deletePost (input: {
+    postId: 1
+  }) {
+    __typename
+    ... on DeletePostSuccess {
+      post {
+        id
       }
     }
   }
@@ -77,6 +138,14 @@ To fetch all posts execute the following query in GraphiQL:
         title
         content
         createdAt
+        tags {
+          edges {
+            node {
+              id
+              name
+            }
+          }
+        }
       }
     }
   }
@@ -89,11 +158,11 @@ We need you to take this sample project, fork the repository, and add some extra
 
 ### Key goals and deliverables
 
-- We would like to be able to tag posts by associating zero or more tags with a single post.
-- We would like to filter the list of posts by tag.
-- We would like to filter posts by the date they were created.
-- Some of our client consume the blog content via the GraphQL API. Currently they can only list and create posts, but have asked for the ability to edit and delete posts.
-- We would also like to filter posts by tag and creation date via the GraphQL API.
+- [x] We would like to be able to tag posts by associating zero or more tags with a single post.
+- [x] We would like to filter the list of posts by tag.
+- [x] We would like to filter posts by the date they were created.
+- [x] Some of our client consume the blog content via the GraphQL API. Currently they can only list and create posts, but have asked for the ability to edit and delete posts.
+- [x] We would also like to filter posts by tag and creation date via the GraphQL API.
 
 **Bonus points**
 
