@@ -1,6 +1,6 @@
 from flask_blog import create_app
 from flask_blog.database import db
-from flask_blog.models import Post
+from flask_blog.models import Post, Tag
 
 
 def run():

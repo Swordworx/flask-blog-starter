@@ -1,13 +1,7 @@
 {% extends 'base.html' %} 
 {% block content %}
-  <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
-  {% if tags %}<span for="tags">Post tags:</span>{% endif %}
-  {% for tag in tags %}
-    <a href="{{ url_for('posts.tag', tag_name=tag.name) }}">
-      <span class="badge badge-secondary">{{ tag.name }}</span>
-    </a>
-  {% endfor %}
-  {% if not posts %}<p>No posts here so far.</p>{% endif %}
+  <h2>{% block title %} Posts with tag <span class="badge badge-secondary">{{ tag.name }}</span> {% endblock %}</h2>
+  {% if not posts %}<p>No posts with tag {{ tag.name }}.</p>{% endif %}
   {% for post in posts %}
     <a href="{{ url_for('posts.post', post_id=post.id) }}">
       <h2>{{ post.title }}</h2>

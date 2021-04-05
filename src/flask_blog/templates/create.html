@@ -16,6 +16,13 @@
                   class="form-control">{{ request.form['content'] }}</textarea>
     </div>
     <div class="form-group">
+        <label for="tags">Tags</label>
+        <input type="text" name="tags" placeholder="Post tags (comma separated)"
+               class="form-control"
+               value="{{ request.form['tags'] }}">
+        </input>
+    </div>
+    <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
