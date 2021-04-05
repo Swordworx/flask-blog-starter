@@ -152,6 +152,42 @@ To fetch all posts execute the following query in GraphiQL:
 }
 ```
 
+Fetch all posts with a certain tag name:
+
+```
+{
+  posts(tagName:"Foo") {
+    edges {
+      node {
+        id
+        title
+        content
+        createdAt
+      }
+    }
+  }
+}
+```
+
+Fetch all posts created at:
+
+```
+{
+  posts(createdAt:"2021-04-05 22:03:09.235258") {
+    edges {
+      node {
+        id
+        title
+        content
+        createdAt
+      }
+    }
+  }
+}
+```
+
+
+
 ## What you need to do
 
 We need you to take this sample project, fork the repository, and add some extra features.
